@@ -14,8 +14,10 @@ describe('Orange HRM Tests', () => {
     myInfoButton: "[href='/web/index.php/pim/viewMyDetails']",
     firstNameField: "[name='firstName']",
     lastNameField: "[name='lastName']",
-    EmployeeField: ".oxd-input--active",
-
+    genericField: ".oxd-input--active",
+    placeholder: "[placeholder='yyyy-dd-mm']",
+    SubmitButton: "[type='submit']",
+//
   }
 
 
@@ -29,9 +31,18 @@ describe('Orange HRM Tests', () => {
     cy.location('pathname').should('equal', '/web/index.php/dashboard/index')
     cy.get(selectorsList.dashboardGrid)
     cy.get(selectorsList.myInfoButton).click()
-    cy.get(selectorsList.firstNameField)
-    cy.get(selectorsList.lastNameField)
-    cy.get(selectorsList.EmployeeField).eq(5).type('EmployeeFieldTest')
+    cy.get(selectorsList.firstNameField).clear().type('FirsNameTest')
+    cy.get(selectorsList.lastNameField).clear().type('LastNameTest')
+    cy.get(selectorsList.genericField).eq(3).clear().type('EmployeeId')
+    cy.get(selectorsList.genericField).eq(4).clear().type('OtherIdTest')
+    cy.get(selectorsList.genericField).eq(5).clear().type('Drivers License Number Test')
+    cy.get(selectorsList.placeholder).eq(0).clear().type('2025-03-14')
+    cy.get(selectorsList.placeholder).eq(1).clear({ force: true }).type('2026-03-14')
+    cy.get(selectorsList.SubmitButton).eq(0).click()
+    cy.get(selectorsList.SubmitButton).eq(1).click()
+    cy.get('body').should('contain', 'Successfully Updated')
+    cy.get('.oxd-toast-close')
+
 
   })
   it('Login sem sucesso', () => {
