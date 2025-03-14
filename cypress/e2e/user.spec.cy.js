@@ -19,7 +19,7 @@ describe('Orange HRM Tests', () => {
     SubmitButton: "[type='submit']",
     nationality: "[clear='false']",
     maritalStatus: "[clear='false']",
-//
+    //
   }
 
 
@@ -40,15 +40,15 @@ describe('Orange HRM Tests', () => {
     cy.get(selectorsList.genericField).eq(5).clear().type('Drivers License Number Test')
     cy.get(selectorsList.placeholder).eq(0).clear().type('2025-03-14')
     cy.get(selectorsList.placeholder).eq(1).clear({ force: true }).type('2026-03-14')
-    /* cy.get(selectorsList.SubmitButton).eq(0).click()
-    cy.get(selectorsList.SubmitButton).eq(1).click() */
-    /* cy.get('body').should('contain', 'Successfully Updated')
-    cy.get('.oxd-toast-close') */
+    cy.get(selectorsList.SubmitButton).eq(0).click()
+    cy.get(selectorsList.SubmitButton).eq(1).click()
+    cy.get('body').should('contain', 'Successfully Updated')
+    cy.get('.oxd-toast-close') 
     cy.get(selectorsList.nationality).eq(0).click()
     cy.contains('Angolan').click()
     cy.get(selectorsList.maritalStatus).eq(1).click()
     cy.contains('Single').click()
-    
+
 
 
   })
